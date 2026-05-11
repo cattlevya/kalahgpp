@@ -13,7 +13,8 @@ import {
     Check,
     CheckCheck,
     Clock,
-    MessageSquare
+    MessageSquare,
+    ChevronDown
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -177,12 +178,15 @@ const Chat = () => {
     }
 
     return (
-        <div className="h-full bg-slate-100 p-4 md:p-6 flex items-center justify-center">
+        <div className="h-full bg-slate-100 p-0 md:p-6 flex items-center justify-center">
             {/* FLOATING CARD CONTAINER */}
-            <div className="w-full h-full max-w-7xl bg-white rounded-2xl shadow-xl overflow-hidden flex border border-slate-200">
+            <div className="w-full h-full max-w-7xl bg-white md:rounded-2xl md:shadow-xl overflow-hidden flex border-none md:border md:border-slate-200">
 
                 {/* --- SIDEBAR (CONTACT LIST) --- */}
-                <div className="w-full md:w-[380px] bg-white border-r border-slate-100 flex flex-col">
+                <div className={clsx(
+                    "w-full md:w-[380px] bg-white border-r border-slate-100 flex-col",
+                    selectedContact ? "hidden md:flex" : "flex"
+                )}>
                     {/* Header */}
                     <div className="p-5 border-b border-slate-50">
                         <h2 className="text-xl font-bold text-slate-800 mb-4">Pesan & Konsultasi</h2>
@@ -262,12 +266,21 @@ const Chat = () => {
                 </div>
 
                 {/* --- CHAT AREA --- */}
-                <div className="flex-1 flex flex-col bg-slate-50/30 relative">
+                <div className={clsx(
+                    "flex-1 bg-slate-50 flex-col",
+                    !selectedContact ? "hidden md:flex" : "flex"
+                )}>
                     {activeChat ? (
                         <>
                             {/* Chat Header */}
-                            <div className="h-20 bg-white border-b border-slate-100 flex items-center justify-between px-6 shadow-sm z-10">
-                                <div className="flex items-center gap-4">
+                            <div className="h-20 bg-white border-b border-slate-100 flex items-center justify-between px-4 md:px-6 shadow-sm z-10">
+                                <div className="flex items-center gap-3 md:gap-4">
+                                    <button
+                                        className="md:hidden p-2 -ml-2 text-slate-500 hover:text-slate-700"
+                                        onClick={() => setSelectedContact(null)}
+                                    >
+                                        <ChevronDown className="w-6 h-6 rotate-90" />
+                                    </button>
                                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold shadow-md shadow-blue-200">
                                         {activeChat.name.charAt(0)}
                                     </div>

@@ -74,7 +74,7 @@ const Konsultasi = () => {
     };
 
     return (
-        <div className="max-w-[1200px] mx-auto p-6 space-y-6">
+        <div className="max-w-[1200px] mx-auto p-4 md:p-6 space-y-4 md:space-y-6">
             <BookingModal
                 isOpen={showBookingModal}
                 onClose={() => setShowBookingModal(false)}
@@ -86,10 +86,10 @@ const Konsultasi = () => {
                 }}
             />
 
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-4 md:mt-0">
                 <div>
-                    <h1 className="text-2xl font-bold text-slate-900">Jadwal Konsultasi</h1>
-                    <p className="text-slate-500">
+                    <h1 className="text-xl md:text-2xl font-bold text-slate-900">Jadwal Konsultasi</h1>
+                    <p className="text-sm md:text-base text-slate-500">
                         {user?.role === 'expert'
                             ? 'Kelola jadwal praktek dan permintaan konsultasi masuk.'
                             : 'Lihat jadwal temu dengan dokter spesialis.'}

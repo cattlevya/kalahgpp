@@ -146,12 +146,12 @@ const DashboardUser = () => {
                 onSuccess={handleConsultationSuccess}
             />
 
-            <div className="max-w-[1600px] mx-auto p-6 space-y-6">
+            <div className="max-w-[1600px] mx-auto p-4 md:p-6 space-y-6">
 
                 {/* --- ROW 1: HERO SECTION (FULL WIDTH) --- */}
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12">
-                        <Card className="relative min-h-[400px] bg-slate-900 border-none text-white overflow-hidden flex flex-col justify-center p-10 shadow-2xl shadow-slate-900/20 rounded-3xl">
+                        <Card className="relative min-h-[300px] md:min-h-[400px] bg-slate-900 border-none text-white overflow-hidden flex flex-col justify-center p-6 md:p-10 shadow-2xl shadow-slate-900/20 rounded-3xl">
                             <BioNetwork />
                             <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                 <div className="space-y-6">
@@ -212,7 +212,7 @@ const DashboardUser = () => {
                     <div className="col-span-12 md:col-span-8 space-y-6">
 
                         {/* 1. Telemedicine Row (Chat & Schedule) */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[280px]"> {/* Fixed height for alignment */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:h-[280px]"> {/* Fixed height for alignment */}
                             {/* Chat Widget */}
                             <NotificationCard
                                 message={latestMessage}
@@ -281,8 +281,8 @@ const DashboardUser = () => {
                 <div className="grid grid-cols-12">
                     <div className="col-span-12">
                         <Card className="p-1 bg-gradient-to-r from-red-500 to-rose-600 border-none shadow-lg shadow-red-500/20 rounded-3xl">
-                            <div className="bg-white rounded-[20px] p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-                                <div className="flex items-center gap-6">
+                            <div className="bg-white rounded-[20px] p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left">
+                                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
                                     <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center flex-shrink-0">
                                         <AlertTriangle className="w-7 h-7 text-red-600" />
                                     </div>

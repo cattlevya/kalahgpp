@@ -78,15 +78,15 @@ const Riwayat = () => {
     }
 
     return (
-        <div className="space-y-6">
-            <div className="flex items-center justify-between">
+        <div className="space-y-6 p-4 md:p-6 mt-4 md:mt-0">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-center">
                     <div className="p-3 bg-indigo-50 rounded-xl mr-4">
                         <History className="w-8 h-8 text-indigo-600" />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-bold text-slate-800">Riwayat Diagnosa</h1>
-                        <p className="text-slate-500">Rekam jejak pemeriksaan kesehatan Anda.</p>
+                        <h1 className="text-xl md:text-2xl font-bold text-slate-800">Riwayat Diagnosa</h1>
+                        <p className="text-sm md:text-base text-slate-500">Rekam jejak pemeriksaan kesehatan Anda.</p>
                     </div>
                 </div>
             </div>

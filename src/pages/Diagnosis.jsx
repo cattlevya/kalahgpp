@@ -99,7 +99,7 @@ const Diagnosis = () => {
     const isResult = currentNode.type === 'result';
 
     return (
-        <div className="max-w-7xl mx-auto pb-24 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto pb-24 px-4 md:px-8 mt-4 md:mt-0">
             <BookingModal
                 isOpen={isBookingOpen}
                 onClose={() => setIsBookingOpen(false)}
@@ -140,7 +140,7 @@ const Diagnosis = () => {
                 </div>
             )}
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
                 {/* Main Content (8/12) */}
                 <div className="lg:col-span-8">
                     <AnimatePresence mode="wait">

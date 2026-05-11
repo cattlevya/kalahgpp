@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import SidebarExpert from './SidebarExpert';
 import Header from './Header';
+import MobileNav from './MobileNav';
 import { useAuth } from '../../context/AuthContext';
 
 const AppShell = ({ children }) => {
@@ -16,11 +17,11 @@ const AppShell = ({ children }) => {
             {user?.role === 'expert' ? <SidebarExpert /> : <Sidebar />}
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col md:ml-[260px] transition-all duration-300">
+            <div className="flex-1 flex flex-col ml-0 md:ml-[260px] transition-all duration-300 relative">
                 <Header />
 
                 {/* Scrollable Content */}
-                <main className={isChatPage ? "flex-1 overflow-hidden p-0" : "flex-1 overflow-y-auto p-6 pb-12"}>
+                <main className={isChatPage ? "flex-1 overflow-hidden p-0 pb-16 md:pb-0" : "flex-1 overflow-y-auto p-4 md:p-6 pb-24 md:pb-12"}>
                     {isChatPage ? (
                         children
                     ) : (
@@ -30,7 +31,8 @@ const AppShell = ({ children }) => {
                     )}
                 </main>
 
-                {/* Fixed Status Bar REMOVED */}
+                {/* Mobile Navigation */}
+                <MobileNav />
             </div>
         </div>
     );

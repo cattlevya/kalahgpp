@@ -31,11 +31,11 @@ const Header = () => {
     const isExpert = user?.role === 'expert';
 
     return (
-        <header className="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-10 px-6 flex items-center justify-between">
+        <header className="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-10 px-4 md:px-6 flex items-center justify-between">
             <div className="flex items-center">
-                <button className="md:hidden mr-4 text-slate-500">
-                    <Menu className="w-6 h-6" />
-                </button>
+                <div className="md:hidden font-bold text-lg text-slate-800 mr-2 tracking-tight">
+                    RESPIRA
+                </div>
                 <nav className="hidden sm:flex text-sm text-slate-500">
                     <span className="hover:text-slate-900 cursor-pointer">Beranda</span>
                     <span className="mx-2">/</span>
@@ -45,7 +45,7 @@ const Header = () => {
                 </nav>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3 md:space-x-4">
                 <button className="relative p-2 text-slate-400 hover:text-slate-600 transition-colors">
                     <Bell className="w-5 h-5" />
                     <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>

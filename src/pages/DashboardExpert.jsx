@@ -147,12 +147,12 @@ const DashboardExpert = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pb-24 font-sans">
-            <div className="max-w-[1600px] mx-auto p-6 space-y-6">
+            <div className="max-w-[1600px] mx-auto p-4 md:p-6 space-y-6">
 
                 {/* --- ROW 1: HERO SECTION (Unified Design) --- */}
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12">
-                        <Card className="relative min-h-[350px] bg-slate-900 border-none text-white overflow-hidden flex flex-col justify-center p-10 shadow-2xl shadow-slate-900/20 rounded-3xl">
+                        <Card className="relative min-h-[300px] md:min-h-[350px] bg-slate-900 border-none text-white overflow-hidden flex flex-col justify-center p-6 md:p-10 shadow-2xl shadow-slate-900/20 rounded-3xl">
                             <BioNetwork />
                             <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                 <div className="space-y-6">
@@ -317,15 +317,15 @@ const DashboardExpert = () => {
                             </div>
 
                             <div className="p-0">
-                                <div className="overflow-x-auto">
-                                    <table className="w-full text-left border-collapse">
+                                <div className="overflow-x-auto w-full">
+                                    <table className="w-full text-left border-collapse min-w-[800px]">
                                         <thead>
                                             <tr className="bg-slate-50/50 text-slate-500 text-xs uppercase tracking-wider border-b border-slate-100">
-                                                <th className="p-4 font-semibold w-[25%]">Pasien</th>
-                                                <th className="p-4 font-semibold w-[20%]">Tanggal</th>
-                                                <th className="p-4 font-semibold w-[30%]">Hasil Diagnosa</th>
-                                                <th className="p-4 font-semibold w-[15%]">Akurasi</th>
-                                                <th className="p-4 font-semibold text-center w-[10%]">Status</th>
+                                                <th className="p-4 font-semibold w-[25%] min-w-[200px]">Pasien</th>
+                                                <th className="p-4 font-semibold w-[20%] min-w-[150px]">Tanggal</th>
+                                                <th className="p-4 font-semibold w-[30%] min-w-[200px]">Hasil Diagnosa</th>
+                                                <th className="p-4 font-semibold w-[15%] min-w-[100px]">Akurasi</th>
+                                                <th className="p-4 font-semibold text-center w-[10%] min-w-[100px]">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-slate-50">
