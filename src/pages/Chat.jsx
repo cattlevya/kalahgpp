@@ -25,6 +25,8 @@ const Chat = () => {
     const [newMessage, setNewMessage] = useState('');
     const [loading, setLoading] = useState(true);
     const messagesEndRef = useRef(null);
+    const chatContainerRef = useRef(null);
+    const isInitialRender = useRef(true);
     const inputRef = useRef(null);
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -95,12 +97,42 @@ const Chat = () => {
     }, [activeChat, user]);
 
     // --- SCROLL TO BOTTOM (Fix for aggressive scrolling) ---
+    const scrollToBottom = (behavior = 'smooth') => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior, block: 'end' });
+        }
+    };
+
     // Track the last message ID to verify if we actually have new content
     const lastMessageId = messages.length > 0 ? messages[messages.length - 1].id : null;
 
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        if (isInitialRender.current) {
+            scrollToBottom('auto');
+            isInitialRender.current = false;
+            return;
+        }
+
+        const lastMessage = messages[messages.length - 1];
+        const isMe = lastMessage?.sender_id === user?.id;
+
+        const container = chatContainerRef.current;
+        const isNearBottom = container
+            ? (container.scrollHeight - container.scrollTop - container.clientHeight < 150)
+            : false;
+
+        if (isMe || isNearBottom) {
+            // Use timeout to ensure DOM has updated with new messages
+            setTimeout(() => {
+                scrollToBottom('smooth');
+            }, 100);
+        }
     }, [lastMessageId]); // Only scroll when the *last message* changes, not on every poll update
+
+    // Reset initial render flag when chat changes
+    useEffect(() => {
+        isInitialRender.current = true;
+    }, [activeChat?.id]);
 
     // Auto-focus input when chat opens
     useEffect(() => {
@@ -304,7 +336,10 @@ const Chat = () => {
                             </div>
 
                             {/* Messages Area */}
-                            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-[#f8fafc]">
+                            <div
+                                ref={chatContainerRef}
+                                className="flex-1 overflow-y-auto p-6 space-y-6 bg-[#f8fafc]"
+                            >
                                 {messages.map((msg, idx) => {
                                     const isMe = msg.sender_id === user.id;
                                     const currentDate = new Date(msg.created_at).setHours(0, 0, 0, 0);
