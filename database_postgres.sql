@@ -119,6 +119,7 @@ CREATE TABLE IF NOT EXISTS app_config (
 -- Seed Data
 -- ============================================================
 INSERT INTO users (name, email, password, role, license_code) VALUES 
-('Dr. Sarah Sp.P', 'admin@respira.id', 'admin', 'expert', 'DOKTER123'),
+('Admin Respira', 'admin@respira.id', 'admin123', 'admin', NULL),
+('Dr. Sarah Sp.P', 'dokter@respira.id', 'dokter123', 'expert', 'DOKTER123'),
 ('Budi Santoso', 'user@gmail.com', 'user123', 'patient', NULL)
 ON CONFLICT (email) DO NOTHING;

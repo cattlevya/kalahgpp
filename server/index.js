@@ -73,6 +73,35 @@ app.get('/api/health', async (req, res) => {
 
 // --- AUTH ROUTES ---
 
+// Temporary endpoint to seed admin on production database
+app.get('/api/seed-admin', async (req, res) => {
+    try {
+        const [existing] = await db.query('SELECT * FROM users WHERE email = $1', ['admin@respira.id']);
+        if (existing.length > 0) {
+            const user = existing[0];
+            if (user.role !== 'admin') {
+                await db.query('UPDATE users SET role = $1, name = $2, password = $3 WHERE email = $4', [
+                    'admin', 
+                    'Admin Respira', 
+                    'admin123', 
+                    'admin@respira.id'
+                ]);
+                return res.json({ success: true, message: 'Role admin@respira.id berhasil diperbarui menjadi admin!' });
+            }
+            return res.json({ success: true, message: 'Akun admin@respira.id sudah terdaftar sebagai admin.' });
+        } else {
+            await db.query(
+                'INSERT INTO users (name, email, password, role, license_code) VALUES ($1, $2, $3, $4, $5)',
+                ['Admin Respira', 'admin@respira.id', 'admin123', 'admin', null]
+            );
+            return res.json({ success: true, message: 'Akun admin@respira.id berhasil didaftarkan sebagai admin!' });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Gagal melakukan seeding admin: ' + err.message });
+    }
+});
+
 app.post('/api/register', async (req, res) => {
     const { name, email, password, role, licenseCode } = req.body;
     try {
